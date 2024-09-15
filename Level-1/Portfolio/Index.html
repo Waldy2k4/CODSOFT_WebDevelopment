@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+
+<style>
+  :root {
+  --background-color: #fff3f5;
+  --text-color: #51516c;
+  --surface: #fff;
+  --hor-rule: #c2c2df;
+  --accent: #ffc0cb;
+  --accent-light: #ffeef1;
+  --hover: 255,255,255;
+  
+  --border-radius-md: 20px;
+  --box-shadow-md: 1.3px 1.2px 2.7px -30px rgba(0, 0, 0, 0.031),
+  3.4px 3.1px 6.9px -30px rgba(0, 0, 0, 0.044),
+  6.9px 6.4px 14.2px -30px rgba(0, 0, 0, 0.056),
+  14.2px 13.1px 29.2px -30px rgba(0, 0, 0, 0.069),
+  39px 36px 80px -30px rgba(0, 0, 0, 0.1);
+
+}
+body.all {
+  --background-color: #fff3f5;
+  --text-color: #51516c;
+  --surface: #fff;
+  --hor-rule: #c2c2df;
+  --accent: #ffc0cb;
+  --accent-light: #ffeef1;
+  --hover: 255,255,255;
+}
+body.skills {
+  --background-color: #ececec;
+  --text-color: #30374b;
+  --surface: #fff;
+  --hor-rule: #9dbeaa;
+  --accent: #d4daff;
+  --accent-light: #e6e9ff;
+  --hover: 255,255,255;
+}
+body.projects {
+  --background-color: #ebe3dc;
+  --text-color: #754b27;
+  --surface: #fff;
+  --hor-rule: #ebe3dc;
+  --accent: #dddddd;
+  --accent-light: #f3f3f3;
+  --hover: 255,255,255;
+}
+body.resume {
+  --background-color: #fff4cd;
+  --text-color: #4c6170;
+  --surface: #fff;
+  --hor-rule: #cbd5dd;
+  --accent: #ffd58d;
+  --accent-light: #ffeccc;
+  --hover: 255,255,255;
+}
+body.contact {
+  --background-color: #f3d0d0;
+  --text-color: #51516c;
+  --surface: #fff;
+  --hor-rule: #c2c2df;
+  --accent: #ffacba;
+  --accent-light: #ffe2e7;
+  --hover: 255,255,255;
+}
+* { box-sizing: border-box;}
+body {
+  font-family: sans-serif;
+  font-size: 15px;
+  margin: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+  transition: all 250ms;
+}
+
+body, html, #wrapper {
+  min-height: 100%;
+}
+
+#wrapper {
+  width: 100%;
+  max-width: 960px;
+  padding: 0 25px 40px;
+  margin: 0 auto;
+}
+
+header {
+  width: 100%;
+  padding: 40px 20px;
+}
+
+#logo img {
+  margin-bottom: 10px;
+  filter: hue-rotate(60deg)  contrast(50%) brightness(1.5) saturate(800%);
+  mix-blend-mode: multiply;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Padauk', sans-serif;
+  font-size: 1.15em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+nav {
+  margin-bottom: 30px;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 10px;
+}
+nav ul li {
+  padding: 8px 16px;
+  background: var(--accent-light);
+  border: 1px solid var(--accent);
+  margin: 6px 4px;
+  border-radius: 400px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: .9em;
+  transition: all 250ms;
+}
+
+nav ul li:hover {
+  background: rgba(var(--hover),.6);
+}
+
+nav ul li.active {
+  background: var(--accent);
+  cursor: default;
+}
+
+#portfolioItems .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: var(--surface);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-md);
+  margin-bottom: 35px;
+  overflow: hidden;
+}
+#portfolioItems .item .content {
+    padding: 10px 30px;
+    width: 100%;
+    max-width: 50%;
+}
+
+#portfolioItems .item h2 {
+    border-bottom: 1px solid var(--hor-rule);
+  padding-bottom: 10px;
+}
+
+#portfolioItems .item .content button {
+    padding: 10px;
+  display: block;
+  width: 100%;
+  font-size: 1em;
+    border-radius: var(--border-radius-md);
+  border: 2px solid var(--accent);
+  background: var(--accent);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 250ms;
+}
+#portfolioItems .item .content button:hover {
+  background: rgba(var(--hover), 1);
+}
+
+#portfolioItems .item .meta {
+  display: block;
+  text-align: left;
+}
+
+#portfolioItems .item .tag {
+  font-size: .8em;
+  background: var(--accent-light);
+  padding: 5px 12px;
+  margin-bottom: 6px;
+  display: inline-block;
+  border-radius: var(--border-radius-md);
+}
+
+#portfolioItems .item .content p {
+  max-inline-size: 68ch;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+div.floralPhoto {
+  width: 100%;
+  max-width: 50%;
+  overflow: hidden;
+}
+
+#portfolioItems .item img {
+  object-fit: cover;
+  object-position: 50% 50%;
+  width: 500px;
+  border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+  transform: scale(1.02);
+  transition: all 1s ease;
+}
+
+#portfolioItems .item:hover img {
+  transform: scale(1.07);
+}
+
+#footer {
+  padding: 20px 20px 20px;
+  font-size: .7em;
+  text-align: center;
+}
+</style>
+  </head>
+
+<div id="wrapper">
+  <header>
+    <div id="logo">
+ <span>Sai Harsha's Portfolio</span>
+    </div>
+  </header>
+  <nav>
+    <ul>
+      <li id="all" class="active">ABOUT</li>
+      <li id="skills">SKILLS</li>
+      <li id="projects">PROJECTS</li>
+      <li id="resume">RESUME</li>
+      <li id="contact">CONTACT</li>
+    </ul>
+  </nav>
+
+  <div id="portfolioItems">
+
+    <div class="item about">
+        <div class="content">
+          <span class="meta"><span class="tag">About Mysely</span></span>
+          <h2>Venkatesan Sai Harsha</h2>       
+          <p>Welcome To My Website! I'm Venkatesan Sai Harsha,  A passionate and dedicated professional in the field of technology. With expertise in competitive programming, And web development. I'm always eager to explore new opportunities and collaborate with others.<p>
+            Feel free to navigate through my website to discover more about my experiences and achievements. If you have any questions or exciting ideas for collaboration, I would be absolutely delighted to connect with you. Let's join forces and shape a brighter future together!</p></p>
+        </div>
+      <div class="floralPhoto">
+      <img src="https://img.freepik.com/premium-photo/cartoon-lofi-young-manga-style-boy-studying-while-listening-music-raining-street-ai-g_972969-1671.jpg" width="500" height="420">
+        </div>
+    </div>
+    
+    <div class="item skills">
+        <div class="content">
+          <span class="meta"><span class="tag">My Skills</span></span>
+          <h2>Technical Skills
+</h2>       
+          <p>I have gained proficiency in a range of programming languages and tools, including : <br> C, Python, Java, HTML, CSS, JavaScript, MongoDB, MySQL, and Tableau. <p>These skills have equipped me to handle both front-end and back-end development tasks, as well as work with databases and data visualization platforms.</p></p>
+        </div>
+      <div class="floralPhoto">
+      <img src="https://cdn.openart.ai/published/yFa3D8dZlShILMLMygbl/lBW7W9WR_-HQZ_raw.jpg" width="500" height="420">
+      </div>
+    </div>
+    
+    <div class="item projects">
+        <div class="content">
+          <span class="meta"><span class="tag">My Projects</span>
+          <h2>Project - 1 : TWITTER CLONE</h2>       
+          <p>I created three essential pages of the Twitter interface using HTML and CSS, which involved creating a layout, structure, and visual elements that closely represented the actual platform. <p>From this project, I improved my front-end development skills, specifically with respect to responsive design, user interface considerations, and attention to detail in recreating a recognizable social media experience. </p> </p>
+        </div>
+      <div class="floralPhoto">
+      <img src="https://backiee.com/static/wallpapers/1000x563/386741.jpg" width="500" height="420">
+      </div>
+    </div>
+    
+    <div class="item projects">
+        <div class="content">
+          <span class="meta"><span class="tag">My Projects</span></span>
+          <h2>Project - 2 : AUTO FILTERING BOT</h2>       
+          <p>In the project, I adopted a Python and MongoDB approach to efficiently handle file storage and access. MongoDB served as the database for storing files of a variety of formats, while Python scripts filtered and helped access the stored files based on partial filenames.<p>Through this project, I was able to dive into data management, file management, and automation, all while trying to Adopt the capabilities of Python, a general purpose programming language, to the scalability of MongoDB.  </p></p>
+        </div>
+      <div class="floralPhoto">
+      <img src="https://images.playground.com/54b93dcfaaf94d6d9b6153fd0f28954f.jpeg" width="500" height="420">
+      </div>
+    </div>
+    
+    <div class="item projects">
+        <div class="content">
+          <span class="meta"><span class="tag">My Projects</span></span>
+          <h2>Project - 3 : CHESS WITH AI</h2>       
+          <p>I created a chess game using HTML, CSS, and TypeScript, focusing primarily on the beginner level of players. The game will be a beginner difficulty, which is easy for new players and guides them in order to develop their strategies.<p>This project would overlay interactive design with AI to form a engaging way for players to improve their chess skills, while relaxing or having fun playing chess. </p></p>
+        </div>
+      <div class="floralPhoto">
+      <img src="https://img.freepik.com/premium-photo/anime-guy-playing-chess-alone_980191-526.jpg" width="500" height="420">
+      </div>
+    </div>
+    
+    <div class="item resume">
+        <div class="content">
+          <span class="meta"><span class="tag">My Resume</span>
+          <h2>Sai Harsha's Resume</h2>       
+          <p>Click On The Below Link To Open My Resume. I've Kept All My Skills, Education, Projects & Certificates.</p>
+          <button> <a href="https://drive.google.com/file/d/14XRffxIKmRm-1HGlrUjlmvnG2OjfSSFJ/view" class="resume-btn" download>Download Resume</a></button>
+        </div>
+      <div class="floralPhoto">
+      <img src="https://pics.craiyon.com/2023-09-24/d80f662fefba4454892d18ba2d85d824.webp" width="500" height="420">
+      </div>
+    </div>
+      
+      <div class="item contact">
+        <div class="content">
+          <span class="meta"><span class="tag">Contact Me</span>
+          <h2>Contact Me Through</h2>       
+          <p>Email : Saiharsha1004@gmail.com</p>
+            <p>Phone Number : +91-9959958741 </p>
+        </div>
+      <div class="floralPhoto">
+      <img src="https://cdn.openart.ai/published/PQOBw69KLm7IV7NCcIv8/Atzppao1_QnMK_1024.webp" width="500" height="420">
+      </div>
+    </div>
+  </div>
+</div>
+<div id="footer">
+  <p>© Sai Harsha's Portfolio</p>
+</div>
+<script>
+  function sortItems(item) {
+  $('#portfolioItems .item').css('display', 'flex');
+  
+  $('#portfolioItems .item').each(function() {
+    if (!$(this).hasClass(item)) {
+      $(this).css('display', 'none');
+    } 
+  })
+}
+
+$( "nav ul li" ).click(function(event) {
+  $( "nav ul li" ).removeClass('active');
+  $(this).addClass('active');
+  $('body').removeClass();
+  $('body').addClass(event.target.id);
+  if (event.target.id === 'all') {
+    $('#portfolioItems .item').css('display', 'flex');
+  } else {
+    sortItems(event.target.id);
+  }
+});
+</script>
